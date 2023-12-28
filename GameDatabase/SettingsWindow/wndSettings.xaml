@@ -1,0 +1,16 @@
+﻿<Window x:Name="wndSetting" x:Class="GameDatabase.SettingsWindow.wndSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameDatabase.SettingsWindow"
+        mc:Ignorable="d"
+        Title="Settings" Height="249" Width="526">
+    <Grid>
+        <Label x:Name="lbl_StarterContent" Content="Starter Content:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbx_StartContentStatus" Content="On" HorizontalAlignment="Left" Margin="108,23,0,0" VerticalAlignment="Top" Click="UpdateStarterContentStatus"/>
+        <Label x:Name="lbl_Note" Content="Note: This will automatically turn off once all starter content has been used once&#xD;&#xA;          and saved into the database " HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_MoreComing" Content="More settings well be made available in the future." HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

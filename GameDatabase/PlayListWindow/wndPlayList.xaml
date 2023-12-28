@@ -1,0 +1,34 @@
+﻿<Window x:Name="wndPlaylist" x:Class="GameDatabase.PlayListWindow.wndPlayList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameDatabase.PlayListWindow"
+        mc:Ignorable="d"
+        Title="Playlist" Height="462" Width="947" Closing="UpdatePlaylist">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="423*"/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="393*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dtg_GameOrder" Margin="13,10,10,23" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" IsReadOnly="True" BeginningEdit="GameBeenEdited" Grid.Column="2" KeyDown="SpecialCharacters" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dgc_PlayOrder" Header="Order" Binding ="{Binding Path=PlayOrder}"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="dgc_Title" Header="Title" Binding ="{Binding Path=Title}"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <DataGrid x:Name="dtg_GameList" Margin="10,13,11,23" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="5*"  x:Name="dgc_GameTitle" Header="Title" Binding ="{Binding Path=Title}"></DataGridTextColumn>
+                <DataGridTextColumn Width="2*" x:Name="dgc_GameStatus" Header="Status" Binding ="{Binding Path=Status}"></DataGridTextColumn>
+                <DataGridTextColumn Width="1*" x:Name="dgc_GameRaiting" Header="Rating" Binding ="{Binding Path=Rating}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="cmd_AddGame" Content="Add Game &gt;" Margin="10,98,15,0" VerticalAlignment="Top" Height="32" Click="cmd_AddGame_Click" Grid.Column="1"/>
+        <Button x:Name="cmd_Edit" Content="Edit &gt;" Margin="10,218,15,0" VerticalAlignment="Top" Height="34" Click="cmd_Edit_Click" IsEnabled="False" Grid.Column="1"/>
+        <Button x:Name="cmd_Save" Content="Save Order &gt;" Margin="10,281,15,0" VerticalAlignment="Top" Height="39" Click="cmd_Save_Click" IsEnabled="False" Grid.Column="1"/>
+        <Button x:Name="cmd_Remove" Content="Remove &gt;" Margin="10,154,15,0" VerticalAlignment="Top" Height="33" Click="cmd_Remove_Click" IsEnabled="False" Grid.Column="1"/>
+    </Grid>
+</Window>

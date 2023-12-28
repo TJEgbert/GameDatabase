@@ -1,0 +1,27 @@
+﻿<Window x:Name="wndClientInfo1" x:Class="GameDatabase.wndClientInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameDatabase"
+        mc:Ignorable="d"
+        Title="Client Information" Height="494" Width="485">
+    <Grid Margin="0,0,0,2">
+        <Label x:Name="lbl_ClientID" Content="Client ID:" HorizontalAlignment="Left" Margin="21,162,0,0" VerticalAlignment="Top" Height="24" Width="63"/>
+        <Label x:Name="lbl_ClientSecret" Content="Client Secret: " HorizontalAlignment="Left" Margin="11,196,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_ClientSecret" HorizontalAlignment="Left" Margin="98,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" TabIndex="1"/>
+        <TextBox x:Name="txt_ClientID" HorizontalAlignment="Left" Margin="98,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" TabIndex="0"/>
+        <Button x:Name="cmd_SubmitClientInfo" Content="Add Client Info" HorizontalAlignment="Center" Margin="0,235,0,0" VerticalAlignment="Top" Width="120" Click="cmd_SubmitClientInfo_Click" TabIndex="2"/>
+        <Label x:Name="lbl_PleaseInsert" Content="Please fill out the following of information " HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_InfoLink" Content="Follow the steps on the account creation  from this link" HorizontalAlignment="Left" Margin="86,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Link" Content="https://api-docs.igdb.com/#getting-started" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Note" Content="Note: This information is stored locally on your machine once it has been entered" HorizontalAlignment="Left" Margin="16,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_StartedContent" Content="Would you like starter content on?" HorizontalAlignment="Left" Margin="21,267,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbx_StarterContent" Content="Yes" HorizontalAlignment="Left" Margin="242,273,0,0" VerticalAlignment="Top" TabIndex="3"/>
+        <Label x:Name="lbl_Explanation" Content="&#xD;&#xA;This means that some user generated content (Rating and Status) will already &#xD;&#xA;&#x9;&#x9;&#x9;have to following information&#xD;&#xA;" HorizontalAlignment="Left" Margin="17,288,0,0" VerticalAlignment="Top" Height="61" Width="433"/>
+        <Label x:Name="lbl_Rating" Content="Raiting: will contain 0-5" HorizontalAlignment="Left" Margin="21,344,0,0" VerticalAlignment="Top" Height="29" Width="135"/>
+        <Label x:Name="lbl_Status" Content="Status: 100% Completed, Never played, Need to pick up, Played, &#xD;&#xA;Played through once, Currently playing, Need to go back to 100%" HorizontalAlignment="Left" Margin="21,373,0,0" VerticalAlignment="Top" Width="448" Height="52"/>
+        <Label x:Name="lbl_Setting" Content="You can always turn this off in the settings" HorizontalAlignment="Left" Margin="27,425,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
