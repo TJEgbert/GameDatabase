@@ -26,7 +26,11 @@ namespace GameDatabase.Common
         /// </summary>
         public clsDataAccess()
         {
-            sConnection = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\GameDatabase.mdb";
+            string path = System.AppDomain.CurrentDomain.BaseDirectory;
+            int RemoveIndex = path.IndexOf("\\bin\\");
+            string DatabasePath = path.Remove(RemoveIndex);
+            DatabasePath += "\\Resource\\GameDatabase.mdb";
+            sConnection = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source=" + DatabasePath;
         }
 
         /// <summary>

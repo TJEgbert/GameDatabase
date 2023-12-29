@@ -9,19 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\GameDatabase.mdb" />
+    <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Resources\**" />
+    <Page Remove="Resources\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestEase" Version="1.6.4" />
     <PackageReference Include="System.Data.OleDb" Version="8.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\GameDatabase.mdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
 
 </Project>
