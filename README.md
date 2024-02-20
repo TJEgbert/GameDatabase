@@ -1,3 +1,8 @@
+Update
+Now there's the option to not use the API and just use it as a self-generated database.  You can also put you client info in later through the settings menu.  If for some reason as well if you want to remove your client info totally you can as well.
+
+Original
+
 Have you ever wanted to keep track of your game collection in an easy-to-use program that also allows you to search it easily? This is the program for you!  As you keep entering more games the search features keep increasing as well.  You also have a record where you can update the order you want to play the games.  This program uses IGDB API to make it easier for you to enter games into your database.  Also, your personal database is all stored locally on your machine.
 
 Set up
@@ -13,6 +18,6 @@ To run the connections to the API and Twitch I used RestEase to connect to and t
 
 Exception
 
-If you receive a message “Please go to the GitHub repository and follow the instructions from the 'Exception' section thank you”.  Please send an email spitfirealucard109@gmail.com with the text from the error_log and a short description of what was going on.  This will be an ongoing project I will be working on so I would be grateful if you would let me know of any errors. 
+If you receive a message “Please go to the GitHub repository and follow the instructions from the 'Exception' section thank you”.  Please send an email gamedatabaseerrors@gmail.com with the text from the error_log and a short description of what was going on.  This will be an ongoing project I will be working on so I would be grateful if you would let me know of any errors. 
 
 To find the error_log of the .exe follow this path GameDatabase\bin\x86\Debug\net6.0-windows\
