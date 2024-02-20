@@ -76,5 +76,22 @@ namespace GameDatabase.SettingsWindow
                 MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Updates the ClientInfo to remove the client info and set the API use to false
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+        public void RemoveClientInfo()
+        {
+            try
+            {
+                Database.ExecuteNonQuery(SQLStatements.RemoveAPIInfo());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " +
+                MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
     }
 }

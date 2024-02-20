@@ -16,9 +16,9 @@
             <ColumnDefinition Width="492*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lbl_search" Content="Search" HorizontalAlignment="Left" Margin="20,13,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Margin="70,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="652" Height="26" KeyDown="EnterPressed" MaxLength="500" Grid.ColumnSpan="2" TabIndex="0"/>
-        <Button x:Name="cmd_Search" Content="Search" HorizontalAlignment="Left" Margin="313,9,0,0" VerticalAlignment="Top" Width="102" Click="cmd_Search_Click" Height="30" Grid.Column="1" TabIndex="1"/>
-        <DataGrid x:Name="dtg_SearchResults" Margin="10,8,9,10" AutoGenerateColumns="False" SelectionChanged="GetInfo" HeadersVisibility="Column" Grid.Row="1">
+        <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Margin="70,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="652" Height="26" KeyDown="EnterPressed" MaxLength="500" Grid.ColumnSpan="2" TabIndex="0" IsEnabled="False"/>
+        <Button x:Name="cmd_Search" Content="Search" HorizontalAlignment="Left" Margin="313,9,0,0" VerticalAlignment="Top" Width="102" Click="cmd_Search_Click" Height="30" Grid.Column="1" TabIndex="1" IsEnabled="False"/>
+        <DataGrid x:Name="dtg_SearchResults" Margin="10,8,9,10" AutoGenerateColumns="False" SelectionChanged="GetInfo" HeadersVisibility="Column" Grid.Row="1" IsEnabled="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="Title" Header="Title" Width="*" Binding ="{Binding Path=name}"></DataGridTextColumn>
             </DataGrid.Columns>

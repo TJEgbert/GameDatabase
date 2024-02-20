@@ -10,7 +10,11 @@
         <Label x:Name="lbl_StarterContent" Content="Starter Content:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cbx_StartContentStatus" Content="On" HorizontalAlignment="Left" Margin="108,23,0,0" VerticalAlignment="Top" Click="UpdateStarterContentStatus"/>
         <Label x:Name="lbl_Note" Content="Note: This will automatically turn off once all starter content has been used once&#xD;&#xA;          and saved into the database " HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_MoreComing" Content="More settings well be made available in the future." HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_MoreComing" Content="More settings well be made available in the future." HorizontalAlignment="Left" Margin="117,175,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_AddClientIInfo" Content="If you want to added client info click this button here" HorizontalAlignment="Left" Margin="19,104,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="cmd_AddClientInfor" Content="Add Client Info" HorizontalAlignment="Left" Margin="325,107,0,0" VerticalAlignment="Top" Width="95" Click="cmd_AddClientInfor_Click"/>
+        <Label x:Name="lbl_RemoveClientIInfo" Content="To remove the client info click this button" HorizontalAlignment="Left" Margin="19,140,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="cmd_RemoveClientInfo" Content="Remove Client Info" HorizontalAlignment="Left" Margin="253,146,0,0" VerticalAlignment="Top" Click="cmd_RemoveClientInfo_Click"/>
 
     </Grid>
 </Window>

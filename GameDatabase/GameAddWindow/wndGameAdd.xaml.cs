@@ -84,7 +84,6 @@ namespace GameDatabase
                 cbx_Status.Text = string.Empty;
 
                 chx_Completed.IsChecked = false;
-                gb_GameInfo.IsEnabled = false;
 
                 if (Logic.StartContentOn())
                 {
@@ -220,10 +219,25 @@ namespace GameDatabase
                 errorHandler = ErrorHandler;
 
                 Logic = new clsGameAddLogic(IGBAApi, database, SQLStatements);
-                cbx_PlatformList.ItemsSource = Logic.GetPlatforms();
+
                 if (Logic.StartContentOn())
                 {
                     Logic.FillStarterContent();
+                }
+
+                if(Logic.GetClientAPIStatus())
+                {
+                    cbx_PlatformList.ItemsSource = Logic.GetPlatforms();
+                    txt_SearchBox.IsEnabled = true;
+                    dtg_SearchResults.IsEnabled = true;
+                    cmd_Search.IsEnabled = true;
+                    cbx_PlatformList.ItemsSource = Logic.GetPlatforms();
+                }
+                else
+                {
+                    cbx_DevelopedList.ItemsSource = Logic.GetDevelopersList();
+                    cbx_PlatformList.ItemsSource = Logic.GetPlatformList();
+                    cbx_Publishers.ItemsSource = Logic.GetPublishersList();
                 }
                 cbx_Status.ItemsSource = Logic.GetStatuses();
                 cbx_Rating.ItemsSource = Logic.GetRatings();
@@ -300,8 +314,7 @@ namespace GameDatabase
                     clsJasonRelated SelectedGame = (clsJasonRelated)dtg_SearchResults.SelectedItem;
                     clsGame NewGame = new clsGame();
 
-                    NewGame.ID = SelectedGame.id.ToString();
-                    NewGame.Title = SelectedGame.name;
+                    NewGame.Title = txt_Title.Text;
                     NewGame.Developer = cbx_DevelopedList.Text;
                     NewGame.Platform = cbx_PlatformList.Text;
                     NewGame.Format = cbx_Format.Text;
@@ -321,6 +334,14 @@ namespace GameDatabase
 
                     MessageBox.Show("Game Successfully Added", "Game Added", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow.GetGameCollections();
+
+                    if (!Logic.GetClientAPIStatus())
+                    {
+                        cbx_DevelopedList.ItemsSource = Logic.GetDevelopersList();
+                        cbx_PlatformList.ItemsSource = Logic.GetPlatformList();
+                        cbx_Publishers.ItemsSource = Logic.GetPublishersList();
+                    }
+
                     StartingSate();
                 }
             }

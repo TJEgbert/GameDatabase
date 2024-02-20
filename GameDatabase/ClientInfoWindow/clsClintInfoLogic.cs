@@ -47,11 +47,11 @@ namespace GameDatabase.ClientInfoWindow
         /// <param name="ClientID">Client ID number from Twitch</param>
         /// <param name="ClientSecret">Client Secret from Twitch</param>
         /// <param name="StarterContent">If the user wants start content or not</param>
-        public void AddClientInfo(string ClientID, string ClientSecret, bool StarterContent)
+        public void AddClientInfo(string ClientID, string ClientSecret, bool StarterContent, bool UseAPI)
         {
             try
             {
-                Database.ExecuteNonQuery(SQLStatements.InsertClientInfo(ClientID, ClientSecret, StarterContent));
+                Database.ExecuteNonQuery(SQLStatements.InsertClientInfo(ClientID, ClientSecret, StarterContent, UseAPI));
             }
             catch (Exception ex)
             {

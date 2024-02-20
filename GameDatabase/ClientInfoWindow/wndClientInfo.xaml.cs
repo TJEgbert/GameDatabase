@@ -75,7 +75,7 @@ namespace GameDatabase
             {
                 if (!(txt_ClientID.Text == "" || txt_ClientSecret.Text == ""))
                 {
-                    Logic.AddClientInfo(txt_ClientID.Text, txt_ClientSecret.Text, cbx_StarterContent.IsChecked.Value);
+                    Logic.AddClientInfo(txt_ClientID.Text, txt_ClientSecret.Text, cbx_StarterContent.IsChecked.Value, true);
                     Logic.GetNewToken();
                     this.Close();
                 }
@@ -85,6 +85,17 @@ namespace GameDatabase
                 Logic.DeleteClientInfo();
                 MessageBox.Show("Twitch did not recognize the Client ID or Client Secret please verify that they are correct", "Client Info", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// Add the client info into the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_NoAPI_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.AddClientInfo("Did not use", "Did not use", cbx_StarterContent.IsChecked.Value, false);
+            this.Close();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace GameDatabase.Common
         public string AddGame(clsGame Game)
         {
             return "INSERT INTO Game (Game_ID, Title, Developer, Platform, Format, Date_Purchased, Status, Rating, Completed, Publisher)" +
-                   "VALUES ("+ Game.ID +", '"+ Game.Title + "', '"+ Game.Developer + "', '"+ Game.Platform +"', '"+ Game.Format+"', " +
+                   "VALUES ("+ Game.ID +","+"'"+ Game.Title + "', '"+ Game.Developer + "', '"+ Game.Platform +"', '"+ Game.Format+"', " +
                    "#"+Game.Date_Purchased+"#, '"+Game.Status+"', "+ Game.Rating +", "+ Game.Completed +", '"+ Game.Publisher + "');";
         }
 
@@ -33,8 +33,8 @@ namespace GameDatabase.Common
         /// <returns>string with query to do so</returns>
         public string AddGameWithNoDate(clsGame Game)
         {
-            return "INSERT INTO Game (Game_ID, Title, Developer, Platform, Format, Status, Rating, Completed, Publisher)" +
-                   "VALUES (" + Game.ID + ", '" + Game.Title + "', '" + Game.Developer + "', '" + Game.Platform + "', '" + Game.Format + "', '"
+            return "INSERT INTO Game (Title, Developer, Platform, Format, Status, Rating, Completed, Publisher)" +
+                   "VALUES ('"+ Game.ID +","  + Game.Title + "', '" + Game.Developer + "', '" + Game.Platform + "', '" + Game.Format + "', '"
                    + Game.Status + "', " + Game.Rating + ", " + Game.Completed + ", '" + Game.Publisher + "');";
         }
 
@@ -54,6 +54,15 @@ namespace GameDatabase.Common
         public string UpdateStarterContent(string ClientID, bool Status)
         {
             return "UPDATE ClientInfo SET Starter_Content = "+ Status + " WHERE Client_ID = '"+ ClientID +"';";
+        }
+
+        /// <summary>
+        /// Sets the Starter_Content field from ClientInfo to false
+        /// </summary>
+        /// <returns>Returns the string to do so</returns>
+        public string GetLastEnteredID()
+        {
+            return "SELECT MAX(Game_ID) From Game;";
         }
 
 
@@ -251,10 +260,15 @@ namespace GameDatabase.Common
         /// <param name="ClientID">string of the clients id</param>
         /// <param name="ClientSecret">string of the client secret</param>
         /// <returns>string with query to do so</returns>
-        public string InsertClientInfo(string ClientID, string ClientSecret, bool StartContent)
+        public string InsertClientInfo(string ClientID, string ClientSecret, bool StartContent, bool UseAPI)
         {
-            return "INSERT INTO ClientInfo(Client_ID, Client_Secret, Starter_Content)" +
-                   "VALUES('" + ClientID + "','" + ClientSecret +"', "+ StartContent +");";
+            return "INSERT INTO ClientInfo(Client_ID, Client_Secret, Starter_Content, Use_API)" +
+                   "VALUES('" + ClientID + "','" + ClientSecret +"', "+ StartContent +", "+ UseAPI+");";
+        }
+
+        public string GetUseAPIStatus()
+        {
+            return "SELECT Use_API FROM ClientInfo";
         }
 
         /// <summary>
@@ -282,6 +296,15 @@ namespace GameDatabase.Common
         public string DeleteClientInfo()
         {
             return "DELETE * FROM ClientInfo;";
+        }
+
+        /// <summary>
+        /// Removes the Client_ID, Client_Secret and sets Use_API to false
+        /// </summary>
+        /// <returns>string with query to do so</returns>
+        public string RemoveAPIInfo()
+        {
+            return ("UPDATE ClientInfo SET Client_ID = 'Did not use', Client_Secret = 'Did not use', Use_API = false;");
         }
         #endregion
     }

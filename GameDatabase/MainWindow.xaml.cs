@@ -137,10 +137,13 @@ namespace GameDatabase
                     this.Close();
                 }
 
-                Logic.CheckTokenExpDate();
+                if(Logic.GetClientAPIStatus()) 
+                {
+                    Logic.CheckTokenExpDate();
 
-                IGBAApi.ClientId = database.ExecuteScalerStatement(SQLStatements.GetClientID());
-                IGBAApi.Authorization = database.ExecuteScalerStatement(SQLStatements.GetToken());
+                    IGBAApi.ClientId = database.ExecuteScalerStatement(SQLStatements.GetClientID());
+                    IGBAApi.Authorization = database.ExecuteScalerStatement(SQLStatements.GetToken());
+                }
 
                 StartingState();
             }

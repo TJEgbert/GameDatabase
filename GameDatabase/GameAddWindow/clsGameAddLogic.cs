@@ -66,6 +66,7 @@ namespace GameDatabase.GameAddWindow
         /// <param name="API">Passed in intaIGBAApi</param>
         /// <param name="Base">Passed in clsDataAccess </param>
         /// <param name="SQL">Passed in clsSQLStatements</param>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public clsGameAddLogic(intaIGBAApi API, clsDataAccess Base, clsSQLStatements SQL)
         {
             try
@@ -93,6 +94,7 @@ namespace GameDatabase.GameAddWindow
         /// </summary>
         /// <param name="GameTitle">The title of the game to be searched to in IGBA API</param>
         /// <returns>An array of clsJasonRelated objects</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public Array SearchGame(string GameTitle)
         {
             try
@@ -111,6 +113,7 @@ namespace GameDatabase.GameAddWindow
         /// </summary>
         /// <param name="GameID">The ID of the selected game</param>
         /// <returns>An array of clsJasonRelated objects</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public Array GetDevelopersList(string GameID)
         {
             try
@@ -146,7 +149,8 @@ namespace GameDatabase.GameAddWindow
         /// <summary>
         /// Calls the IGBA API converts returning .jason into an array of different platforms
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An array of clsJasonRelated objects</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public Array GetPlatforms()
         {
             try
@@ -164,6 +168,7 @@ namespace GameDatabase.GameAddWindow
         /// Gets a list of unique status from the database and starter content if on
         /// </summary>
         /// <returns>A list of strings of status</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public List<string> GetStatuses()
         {
             try
@@ -205,8 +210,8 @@ namespace GameDatabase.GameAddWindow
                         }
                     }
                 }
-
-                TurnOfStartContent();
+                StatusList.Sort();
+                TurnOffStartContent();
                 return StatusList;
             }
             catch (Exception ex)
@@ -219,6 +224,7 @@ namespace GameDatabase.GameAddWindow
         /// Gets a list of unique Ratings from the database and starter content if on
         /// </summary>
         /// <returns>A list of strings of status</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public List<string> GetRatings()
         {
             try
@@ -260,7 +266,8 @@ namespace GameDatabase.GameAddWindow
                     }
                 }
 
-                TurnOfStartContent();
+                RatingList.Sort();
+                TurnOffStartContent();
                 return RatingList;
             }
             catch (Exception ex)
@@ -273,10 +280,12 @@ namespace GameDatabase.GameAddWindow
         /// Call the database to add the newly created game to the database
         /// </summary>
         /// <param name="NewGame">clsGame the new game to added</param>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public void AddGame(clsGame NewGame)
         {
             try
             {
+                NewGame.ID = GetNextID().ToString();
                 if (NewGame.Date_Purchased != string.Empty)
                 {
                     Database.ExecuteNonQuery(SQLStatements.AddGame(NewGame));
@@ -297,6 +306,7 @@ namespace GameDatabase.GameAddWindow
         /// Checks to see if starter content is on and if so calls FillStartContent
         /// </summary>
         /// <returns>true if start content is on false if not</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public bool StartContentOn()
         {
             try
@@ -316,6 +326,7 @@ namespace GameDatabase.GameAddWindow
         /// <summary>
         /// Fills the starter content strings if need
         /// </summary>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
         public void FillStarterContent()
         {
             try
@@ -331,6 +342,7 @@ namespace GameDatabase.GameAddWindow
                 for (int i = 0; i < 6; i++)
                 {
                     RatingStarterContent.Add(i.ToString());
+                    RatingStarterContent.Sort();
                 }
             }
             catch (Exception ex)
@@ -342,7 +354,8 @@ namespace GameDatabase.GameAddWindow
         /// <summary>
         /// If all the starter content been used once.  This turns off Starter Content for the user
         /// </summary>
-        private void TurnOfStartContent()
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        private void TurnOffStartContent()
         {
             try
             {
@@ -359,7 +372,149 @@ namespace GameDatabase.GameAddWindow
 
         }
 
-    }
+        /// <summary>
+        /// Gets the user API status
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        public bool GetClientAPIStatus()
+        {
+            try
+            {
+                return bool.Parse(Database.ExecuteScalerStatement(SQLStatements.GetUseAPIStatus()));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " +
+                MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
 
+        /// <summary>
+        /// Gets a list of unique platforms from the database and starter content if on
+        /// </summary>
+        /// <returns>A list of strings of platforms</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        public List<string> GetPlatformList()
+        {
+            try
+            {
+                List<string> PlatformList = new List<string>();
+                DataSet Data = new DataSet();
+                int rows = 0;
+
+                Data = Database.ExecuteSQLStatement(SQLStatements.GetFilter2("Platform"), ref rows);
+
+                if (Data != null)
+                {
+
+                    for (int i = 0; i < rows; i++)
+                    {
+                        PlatformList.Add(Data.Tables[0].Rows[i][0].ToString());
+                    }
+                    PlatformList.Sort();
+
+                }
+
+                return PlatformList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " + MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of developers status from the database and starter content if on
+        /// </summary>
+        /// <returns>A list of strings of developers</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        public List<string> GetDevelopersList()
+        {
+            try
+            {
+                List<string> DeveloperList = new List<string>();
+                DataSet Data = new DataSet();
+                int rows = 0;
+
+                Data = Database.ExecuteSQLStatement(SQLStatements.GetFilter2("Developer"), ref rows);
+
+                if (Data != null)
+                {
+
+                    for (int i = 0; i < rows; i++)
+                    {
+                        DeveloperList.Add(Data.Tables[0].Rows[i][0].ToString());
+                    }
+                    DeveloperList.Sort();
+                }
+
+                return DeveloperList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " + MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of developers status from the database and starter content if on
+        /// </summary>
+        /// <returns>A list of strings of developers</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        public List<string> GetPublishersList()
+        {
+            try
+            {
+                List<string> PublisherList = new List<string>();
+                DataSet Data = new DataSet();
+                int rows = 0;
+
+                Data = Database.ExecuteSQLStatement(SQLStatements.GetFilter2("Developer"), ref rows);
+
+                if (Data != null)
+                {
+
+                    for (int i = 0; i < rows; i++)
+                    {
+                        PublisherList.Add(Data.Tables[0].Rows[i][0].ToString());
+                    }
+
+                }
+                PublisherList.Sort();
+                return PublisherList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " + MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Get the highest number index from the Game table and increments it by one
+        /// </summary>
+        /// <returns>The next GameID</returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        private int GetNextID()
+        {
+            try
+            {
+                int nextID = 0;
+                if (int.TryParse(Database.ExecuteScalerStatement(SQLStatements.GetLastEnteredID()), out nextID))
+                {
+                    nextID++;
+                    return nextID;
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " +
+                MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+
+        }
+
+    }
 
 }

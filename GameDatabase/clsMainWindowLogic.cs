@@ -479,5 +479,23 @@ namespace GameDatabase
             }
         }
 
+        /// <summary>
+        /// Gets the user API status
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception">Throws it up to th next level</exception>
+        public bool GetClientAPIStatus()
+        {
+            try
+            {
+                return bool.Parse(Database.ExecuteScalerStatement(SQLStatements.GetUseAPIStatus()));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " . " +
+                MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+        }
+
     }
 }

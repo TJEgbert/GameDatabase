@@ -1,4 +1,5 @@
-﻿using GameDatabase.Common;
+﻿using GameDatabase.AddClientInfo;
+using GameDatabase.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,48 @@ namespace GameDatabase.SettingsWindow
                 errorHandler.logError(MethodInfo.GetCurrentMethod().DeclaringType.Name, MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
            
+        }
+
+        /// <summary>
+        /// Let the user add their client info
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_AddClientInfor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                wndAddClientInfo AddClientInfo = new wndAddClientInfo(database, SQLStatements, errorHandler);
+                AddClientInfo.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                errorHandler.logError(MethodInfo.GetCurrentMethod().DeclaringType.Name, MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Lets the user remove their client info
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_RemoveClientInfo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult answer = MessageBox.Show("Are you sure you want to remove your client info?", "Confirmation",
+                                                  MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (answer == MessageBoxResult.Yes)
+                {
+                    Logic.RemoveClientInfo();
+                    MessageBox.Show("Client info successfully removed!", "Client info removed", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                errorHandler.logError(MethodInfo.GetCurrentMethod().DeclaringType.Name, MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+
         }
     }
 }

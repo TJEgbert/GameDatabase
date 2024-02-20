@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameDatabase"
         mc:Ignorable="d"
-        Title="Client Information" Height="494" Width="485">
+        Title="Client Information" Height="711" Width="498">
     <Grid Margin="0,0,0,2">
         <Label x:Name="lbl_ClientID" Content="Client ID:" HorizontalAlignment="Left" Margin="21,162,0,0" VerticalAlignment="Top" Height="24" Width="63"/>
         <Label x:Name="lbl_ClientSecret" Content="Client Secret: " HorizontalAlignment="Left" Margin="11,196,0,0" VerticalAlignment="Top"/>
@@ -16,12 +16,16 @@
         <Label x:Name="lbl_InfoLink" Content="Follow the steps on the account creation  from this link" HorizontalAlignment="Left" Margin="86,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Link" Content="https://api-docs.igdb.com/#getting-started" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Note" Content="Note: This information is stored locally on your machine once it has been entered" HorizontalAlignment="Left" Margin="16,116,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_StartedContent" Content="Would you like starter content on?" HorizontalAlignment="Left" Margin="21,267,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbx_StarterContent" Content="Yes" HorizontalAlignment="Left" Margin="242,273,0,0" VerticalAlignment="Top" TabIndex="3"/>
-        <Label x:Name="lbl_Explanation" Content="&#xD;&#xA;This means that some user generated content (Rating and Status) will already &#xD;&#xA;&#x9;&#x9;&#x9;have to following information&#xD;&#xA;" HorizontalAlignment="Left" Margin="17,288,0,0" VerticalAlignment="Top" Height="61" Width="433"/>
-        <Label x:Name="lbl_Rating" Content="Raiting: will contain 0-5" HorizontalAlignment="Left" Margin="21,344,0,0" VerticalAlignment="Top" Height="29" Width="135"/>
-        <Label x:Name="lbl_Status" Content="Status: 100% Completed, Never played, Need to pick up, Played, &#xD;&#xA;Played through once, Currently playing, Need to go back to 100%" HorizontalAlignment="Left" Margin="21,373,0,0" VerticalAlignment="Top" Width="448" Height="52"/>
-        <Label x:Name="lbl_Setting" Content="You can always turn this off in the settings" HorizontalAlignment="Left" Margin="27,425,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_StartedContent" Content="Would you like starter content on?" HorizontalAlignment="Left" Margin="25,499,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbx_StarterContent" Content="Yes" HorizontalAlignment="Left" Margin="246,505,0,0" VerticalAlignment="Top" TabIndex="3"/>
+        <Label x:Name="lbl_Explanation" Content="&#xD;&#xA;This means that some user generated content (Rating and Status) will already &#xD;&#xA;&#x9;&#x9;&#x9;have to following information&#xD;&#xA;" HorizontalAlignment="Left" Margin="21,520,0,0" VerticalAlignment="Top" Height="61" Width="433"/>
+        <Label x:Name="lbl_Rating" Content="Raiting: will contain 0-5" HorizontalAlignment="Left" Margin="25,576,0,0" VerticalAlignment="Top" Height="29" Width="135"/>
+        <Label x:Name="lbl_Status" Content="Status: 100% Completed, Never played, Need to pick up, Played, &#xD;&#xA;Played through once, Currently playing, Need to go back to 100%" HorizontalAlignment="Center" Margin="0,605,0,0" VerticalAlignment="Top" Width="448" Height="52"/>
+        <Label x:Name="lbl_Setting" Content="You can always turn this off in the settings" HorizontalAlignment="Left" Margin="31,657,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Or" Content="---Or---" HorizontalAlignment="Left" Margin="222,260,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Cont" Content="You can continue without using Client ID and Client Secret but some features of the &#xD;&#xA;add game window won’t be available. Those being the search feature and the auto fill &#xD;&#xA;of the drop-down menus for developers, publishers, and platform.  Those fields will &#xD;&#xA;need to be manually, as you input more into the database more options will&#xD;&#xA; become available." HorizontalAlignment="Left" Margin="14,286,0,0" VerticalAlignment="Top" Height="90" Width="498"/>
+        <Button x:Name="cmd_NoAPI" Content="continue without &#xD;&#xA;client information" HorizontalAlignment="Center" Margin="0,367,0,0" VerticalAlignment="Top" Height="47" Width="134" Click="cmd_NoAPI_Click"/>
+        <Label x:Name="lbl_InSettings" Content="This can be changed later in settings" HorizontalAlignment="Left" Margin="136,431,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
