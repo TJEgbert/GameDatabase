@@ -1,4 +1,5 @@
 Update
+
 Now there's the option to not use the API and just use it as a self-generated database.  You can also put you client info in later through the settings menu.  If for some reason as well if you want to remove your client info totally you can as well.
 
 Original
