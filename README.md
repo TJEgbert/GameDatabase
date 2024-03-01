@@ -19,6 +19,6 @@ To run the connections to the API and Twitch I used RestEase to connect to and t
 
 Exception
 
-If you receive a message “Please go to the GitHub repository and follow the instructions from the 'Exception' section thank you”.  Please send an email spitfirealucard109@gmail.com with the text from the error_log and a short description of what was going on.  This will be an ongoing project I will be working on so I would be grateful if you would let me know of any errors. 
+If you receive a message “Please go to the GitHub repository and follow the instructions from the 'Exception' section thank you”.  Please send an email spitfirealucard109@gmail.com with a title Game Database Error and the text from the error_log and a short description of what was going on.  This will be an ongoing project I will be working on so I would be grateful if you would let me know of any errors. 
 
 To find the error_log of the .exe follow this path GameDatabase\bin\x86\Debug\net6.0-windows\
